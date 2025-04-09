@@ -1,12 +1,13 @@
-CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic
-
 SRC_DIR = src
+INCLUDE_DIR = include
 OBJ_DIR = obj
 BIN_DIR = bin
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic -I$(INCLUDE_DIR)
 
 EXECUTABLE = cuhip
 
