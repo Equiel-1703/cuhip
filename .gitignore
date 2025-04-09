@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# bin and obj folders
+bin/
+obj/
