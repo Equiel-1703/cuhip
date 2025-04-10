@@ -97,12 +97,14 @@ int main(int argc, char const *argv[])
     // Hipify the file
     fs::path hipified_output = source_file.parent_path() / source_file.stem() += ".hip";
 
+    std::cout << "-- Hipify output:" << std::endl;
     int ret_hipify = system(("hipify-clang " + source_file.string() + " -o " + hipified_output.string()).c_str());
     if (ret_hipify != 0)
     {
         std::cerr << "ERROR: Failed to hipify the file " << source_file << "!" << std::endl;
         return 1;
     }
+    std::cout << std::endl;
 
     if (verbose)
     {
@@ -113,18 +115,21 @@ int main(int argc, char const *argv[])
     // Compile the hipified file
     fs::path compiled_output = source_file.parent_path() / source_file.stem() += ".out";
 
+    std::cout << "-- Hipcc output:" << std::endl;
     int ret_compile = system(("hipcc " + hipified_output.string() + " -o " + compiled_output.string()).c_str());
     if (ret_compile != 0)
     {
         std::cerr << "ERROR: Failed to compile the hipified file " << hipified_output << "!" << std::endl;
         return 1;
     }
+    std::cout << std::endl;
 
     if (verbose)
     {
         std::cout << "Compiled successfully to: " << compiled_output << " - OK!" << std::endl;
     }
 
+    // Completion message
     std::cout << "Hipification and compilation completed successfully!" << std::endl;
 
     return 0;
