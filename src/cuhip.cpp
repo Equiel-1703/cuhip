@@ -9,11 +9,14 @@ using std::string;
 
 bool check_hipify_hipcc()
 {
-    int status_hipify = system("hipify-clang --version > /dev/null 2>&1");
+    string hipify_check = "hipify-clang --version >" + NULL_PIPE + " 2>&1";
+    string hipcc_check = "hipcc --version >" + NULL_PIPE + " 2>&1";
+
+    int status_hipify = system(hipify_check.c_str());
     if (status_hipify != 0)
         throw std::runtime_error("hipify-clang is not installed or not in PATH");
 
-    int status_hipcc = system("hipcc --version > /dev/null 2>&1");
+    int status_hipcc = system(hipcc_check.c_str());
     if (status_hipcc != 0)
         throw std::runtime_error("hipcc is not installed or not in PATH");
 
