@@ -60,4 +60,6 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-Learn CUDA on AMD GPUs with **cuhip**!
+<div align="center">
+What are you waiting for? Go ahead and do some CUDA programming on your AMD GPU with <strong>cuhip</strong>!
+</div>
